@@ -2,18 +2,23 @@ from typing import List, Union
 import numpy.typing as npt
 import numpy as np
 
+
 def base_count(fastafile: str) -> List[int]:
     # 課題 1-1
     # skip first line
     i = 0
-    for c in str:
+    s = ''
+    with open('1_sequence_processing/'+fastafile) as f:
+        s = f.read()
+    for c in s:
         if c == '\n':
             break
         i+=1
     # count
     res = [0, 0, 0, 0]
     offset = 0
-    for c in range(i,len(str)):
+    for i in range(i,len(s)):
+        c = s[i]
         if c == 'A':
             offset = 0
         elif c == 'T':
@@ -27,7 +32,7 @@ def base_count(fastafile: str) -> List[int]:
         res[offset] = res[offset]+1
 
 
-    return [0, 0, 0, 0] # A, T, G, C
+    return res # A, T, G, C
 
 def gen_rev_comp_seq(fastafile: str) -> str:
     # 課題 1-2
