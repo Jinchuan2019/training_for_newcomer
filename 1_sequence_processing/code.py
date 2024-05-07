@@ -4,6 +4,29 @@ import numpy as np
 
 def base_count(fastafile: str) -> List[int]:
     # 課題 1-1
+    # skip first line
+    i = 0
+    for c in str:
+        if c == '\n':
+            break
+        i+=1
+    # count
+    res = [0, 0, 0, 0]
+    offset = 0
+    for c in range(i,len(str)):
+        if c == 'A':
+            offset = 0
+        elif c == 'T':
+            offset = 1
+        elif c == 'G':
+            offset = 2
+        elif c == 'C':
+            offset = 3
+        else:
+            continue
+        res[offset] = res[offset]+1
+
+
     return [0, 0, 0, 0] # A, T, G, C
 
 def gen_rev_comp_seq(fastafile: str) -> str:
